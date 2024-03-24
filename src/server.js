@@ -8,8 +8,8 @@ connectDB()
             console.info("ERROR: " + error)
             throw error
         })
-        app.listen(config.PORT, () => {
-            console.info(`Server is listening at port: ${config.PORT}`)
+        app.listen(config.PORT || process.env.PORT, () => {
+            console.info("Server is listening")
         })
     })
     .catch((err) => {

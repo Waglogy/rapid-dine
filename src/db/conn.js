@@ -3,7 +3,9 @@ const config = require("../config/environment.config.js")
 
 const connectDB = async () => {
     try {
-        const connectionInstance = await mongoose.connect(`${config.MONGO_URI}`)
+        const connectionInstance = await mongoose.connect(
+            `${config.MONGO_URI || process.env.MONGO_URI}`
+        )
         console.info(
             `MongoDB connected !! DB HOST : ${connectionInstance.connection.host}`
         )
