@@ -5,8 +5,7 @@ const itemRoute = require("express").Router()
 
 itemRoute
     .route("/add")
-    // .post(multer.single("image"), schemaValidator(itemSchema), addItems)
-    .post(multer.single("image"), addItems)
+    .post(multer.single("image"), schemaValidator(itemSchema), addItems)
 
 itemRoute.route("/all").get(getAllItems)
 
