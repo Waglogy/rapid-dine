@@ -1,17 +1,16 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose")
+const config = require("../config/config.js")
 
 const connectDB = async () => {
-  try {
-    const connectionInstance = await mongoose.connect(
-      `//urlhere`,
-    );
-    console.log(
-      `\n MongoDB connected !! DB HOST : ${connectionInstance.connection.host}`,
-    );
-  } catch (error) {
-    console.log("MongoDB connection error : " + error);
-    process.exit(1);
-  }
-};
+    try {
+        const connectionInstance = await mongoose.connect(`${config.MONGO_URI}`)
+        console.info(
+            `MongoDB connected !! DB HOST : ${connectionInstance.connection.host}`
+        )
+    } catch (error) {
+        console.error("MongoDB connection error : " + error)
+        process.exit(1)
+    }
+}
 
-export default connectDB;
+module.exports = connectDB

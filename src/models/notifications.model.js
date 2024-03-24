@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+const mongoose = require("mongoose")
 
 const notificationSchema = new mongoose.Schema(
     {
@@ -7,7 +7,7 @@ const notificationSchema = new mongoose.Schema(
         },
         tableId: {
             type: mongoose.Types.ObjectId,
-            ref: 'Table',
+            ref: "Table",
         },
     },
     {
@@ -15,4 +15,6 @@ const notificationSchema = new mongoose.Schema(
     }
 )
 
-export const Notifications = mongoose.Model('Notification', notificationSchema)
+const Notifications = mongoose.Model("Notification", notificationSchema)
+
+module.exports = { Notifications }

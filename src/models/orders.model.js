@@ -1,11 +1,11 @@
-import mongoose from 'mongoose'
+const mongoose = require("mongoose")
 
 const orderSchema = new mongoose.Schema(
     {
         items: [
             {
                 type: mongoose.Types.ObjectId,
-                ref: 'Item',
+                ref: "Item",
             },
         ],
         status: {
@@ -14,7 +14,7 @@ const orderSchema = new mongoose.Schema(
         },
         tableId: {
             type: mongoose.Types.ObjectId,
-            ref: 'Table',
+            ref: "Table",
         },
     },
     {
@@ -22,4 +22,6 @@ const orderSchema = new mongoose.Schema(
     }
 )
 
-export const Order = mongoose.Model('Order', orderSchema)
+const Order = mongoose.Model("Order", orderSchema)
+
+module.exports = { Order }

@@ -1,7 +1,2 @@
-*.env
-.env
-.env.*
-
-./dist
 /node_modules
 /.vscode

@@ -1,11 +1,11 @@
-import mongoose from 'mongoose'
+const mongoose = require("mongoose")
 
 const tableSchema = new mongoose.Schema(
     {
         itemsServed: [
             {
                 type: mongoose.Types.ObjectId,
-                ref: 'Item',
+                ref: "Item",
             },
         ],
         tableNo: {
@@ -13,17 +13,14 @@ const tableSchema = new mongoose.Schema(
             required: true,
         },
         qrImage: {
-            type: {
-                imageUrl: {
-                    type: String,
-                    required: true,
-                },
-                imageId: {
-                    type: String,
-                    required: true,
-                },
+            imageUrl: {
+                type: String,
+                required: true,
             },
-            required: true,
+            imageId: {
+                type: String,
+                required: true,
+            },
         },
     },
     {
@@ -31,4 +28,6 @@ const tableSchema = new mongoose.Schema(
     }
 )
 
-export const Table = mongoose.Model('Table', tableSchema)
+const Table = mongoose.Model("Table", tableSchema)
+
+module.exports = { Table }

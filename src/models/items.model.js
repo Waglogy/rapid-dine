@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+const mongoose = require("mongoose")
 
 const itemSchema = new mongoose.Schema(
     {
@@ -23,6 +23,7 @@ const itemSchema = new mongoose.Schema(
         price: {
             type: Number,
             required: true,
+            default: 0,
         },
         hidden: {
             type: Boolean,
@@ -38,4 +39,6 @@ const itemSchema = new mongoose.Schema(
     }
 )
 
-export const Items = mongoose.Model('Items', itemSchema)
+const Items = mongoose.Model("Items", itemSchema)
+
+module.exports = { Items }
