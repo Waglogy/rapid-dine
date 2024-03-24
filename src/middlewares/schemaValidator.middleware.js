@@ -17,7 +17,7 @@ const schemaValidator = (schema) => async (req, res, next) => {
         const validationError = fromZodError(err)
 
         res.status(StatusCodes.BAD_REQUEST).json({
-            error: validationError.details,
+            error: validationError.name,
             status: false,
         })
     }
