@@ -3,14 +3,14 @@ const mongoose = require("mongoose")
 const itemSchema = new mongoose.Schema(
     {
         image: {
-            //not confirmed
             imageUrl: {
                 type: String,
+                required: true,
             },
             imageId: {
                 type: String,
+                required: true,
             },
-            required: true,
         },
         itemName: {
             type: String,
@@ -39,6 +39,6 @@ const itemSchema = new mongoose.Schema(
     }
 )
 
-const Items = mongoose.Model("Items", itemSchema)
+const ItemsModel = mongoose.model("Items", itemSchema)
 
-module.exports = { Items }
+module.exports = { ItemsModel }

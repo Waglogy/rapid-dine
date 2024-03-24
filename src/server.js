@@ -1,4 +1,4 @@
-const config = require("./config/config")
+const config = require("./config/environment.config")
 const connectDB = require("./db/conn")
 const { app } = require("./app")
 
@@ -13,5 +13,5 @@ connectDB()
         })
     })
     .catch((err) => {
-        console.error("mongoDB connection FAILED !!!" + err)
+        console.error("MongoDB connection FAILED !!!" + err)
     })

@@ -1,9 +1,13 @@
-const { addItems } = require("../controllers/item.controller")
-const schemaValidator = require("../middlewares/schemaValidator.middleware")
-const { itemSchema } = require("../utils/validator/item.validator")
+const { addItems, getAllItems } = require("../controllers/item.controller")
+const multer = require("../config/multer.config")
 
 const itemRoute = require("express").Router()
 
-itemRoute.route("/add").post(schemaValidator(itemSchema), addItems)
+itemRoute
+    .route("/add")
+    // .post(multer.single("image"), schemaValidator(itemSchema), addItems)
+    .post(multer.single("image"), addItems)
+
+itemRoute.route("/all").get(getAllItems)
 
 module.exports = { itemRoute }
