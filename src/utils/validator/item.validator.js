@@ -18,13 +18,13 @@ const itemSchema = z.object({
         .max(255)
         .trim(),
     price: z
-        .number({
+        .string({
             required_error: "Price is required",
         })
         .min(0),
-    hidden: z.boolean({
-        required_error: "Hidden is required",
-    }),
+    // hidden: z.boolean({
+    //     required_error: "Hidden is required",
+    // }),
     category: z
         .string({
             required_error: "Category is required",

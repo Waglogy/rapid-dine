@@ -6,7 +6,7 @@ const { ItemsModel } = require("../models/items.model")
 const ApiResponse = require("../utils/ApiResponse")
 
 const addItems = asyncErrorHandler(async (req, res) => {
-    const { itemName, description, price, hidden, category } = req.body
+    const { itemName, description, price, category } = req.body
     if (!req.file)
         throw new ApiError(
             StatusCodes.BAD_REQUEST,
@@ -15,7 +15,7 @@ const addItems = asyncErrorHandler(async (req, res) => {
     const image = await imageUploader(req.file.path, "items")
 
     // Save the item to the database
-
+    const numberdPrice = Number(price)
     await ItemsModel.create({
         image: {
             imageUrl: image.secure_url,
@@ -23,8 +23,7 @@ const addItems = asyncErrorHandler(async (req, res) => {
         },
         itemName,
         description,
-        price,
-        hidden,
+        price: numberdPrice,
         category,
     })
 
