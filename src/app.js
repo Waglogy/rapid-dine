@@ -10,12 +10,12 @@ const { StatusCodes } = require("http-status-codes")
 
 const app = express()
 
-/* app.use(
+app.use(
     cors({
-        origin: process.env.CORS_ORIGIN,
+        origin: "*",
         credentials: true,
     })
-) */
+)
 app.use(helmet())
 app.use(express.json({ limit: "20mb" }))
 app.use(express.urlencoded({ extended: true }))
