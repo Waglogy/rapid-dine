@@ -33,6 +33,11 @@ const itemSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        quantity : {
+            type: Number,
+            required: true,
+            default: 0
+        }
     },
     {
         timestamps: true,

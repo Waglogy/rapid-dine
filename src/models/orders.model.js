@@ -8,7 +8,7 @@ const orderSchema = new mongoose.Schema(
                 ref: "Item",
             },
         ],
-        status: {
+        completeStatus: {
             type: Boolean,
             default: false,
         },
