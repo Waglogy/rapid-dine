@@ -1,3 +1,5 @@
+const ApiError = require("./ApiError")
+
 const cloudinary = require("cloudinary").v2
 
 cloudinary.config({
@@ -14,7 +16,7 @@ const imageUploader = async (...image_details) => {
         })
         return result
     } catch (error) {
-        next(error)
+        throw new ApiError(400, "Image Upload Error")
     }
 }
 

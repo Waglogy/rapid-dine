@@ -2,12 +2,13 @@ require("dotenv").config()
 const express = require("express")
 const path = require("path")
 const helmet = require("helmet")
-const cors = require('cors')
+const cors = require("cors")
 
 // import modules
 
 const { mainRoute } = require("./routes/main.routes")
 const { StatusCodes } = require("http-status-codes")
+const ApiError = require("./utils/ApiError")
 
 const app = express()
 
@@ -27,10 +28,16 @@ app.use(express.static(path.join(__dirname, "public")))
 app.use("/api", mainRoute)
 
 app.use((err, req, res, next) => {
-    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-        success: false,
-        error: err.message,
-    })
+    if (err instanceof ApiError)
+        res.status(err.statusCode).json({
+            status: false,
+            message: err.message,
+        })
+    else
+        res.status(500).json({
+            status: false,
+            message: "Internal Server Error",
+        })
 })
 
 module.exports = { app }
