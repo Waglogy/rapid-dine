@@ -34,7 +34,7 @@ const addTableController = asyncErrorHandler(async (req, res) => {
             "There is an error while generating QR Code. Please try again later."
         )
 
-    Table.create({
+    await Table.create({
         tableNo,
         QRCode: qrcode,
     })
