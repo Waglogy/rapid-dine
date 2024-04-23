@@ -60,4 +60,4 @@ const toggleCompleteStatus = asyncErrorHandler(async (req, res) => {
         )
 })
 
-module.exports = {placeOrder, toggleCompleteStatus}
+module.exports = { placeOrder, toggleCompleteStatus }
